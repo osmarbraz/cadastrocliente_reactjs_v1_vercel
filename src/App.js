@@ -4,9 +4,9 @@ import {BrowserRouter, Routes, Route, Outlet, Link, useNavigate, useParams} from
 import { useState , useEffect } from 'react';
 
 // Define o endereço do servidor
-//const endereco_servidor = "https://cadastrocliente-nodejs-v1-vercel.vercel.app";
+const endereco_servidor = "https://cadastrocliente-nodejs-v1-vercel.vercel.app";
 
-const endereco_servidor = "http://localhost:8000";
+//const endereco_servidor = "http://localhost:8000";
 
 /**
  * Layout do menu.
