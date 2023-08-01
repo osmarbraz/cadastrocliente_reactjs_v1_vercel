@@ -4,7 +4,9 @@ import {BrowserRouter, Routes, Route, Outlet, Link, useNavigate, useParams} from
 import { useState , useEffect } from 'react';
 
 // Define o endereço do servidor
-const endereco_servidor = "https://cadastrocliente-nodejs-v1-vercel.vercel.app"
+//const endereco_servidor = "https://cadastrocliente-nodejs-v1-vercel.vercel.app";
+
+const endereco_servidor = "http://localhost:8000";
 
 /**
  * Layout do menu.
@@ -149,10 +151,6 @@ function FrmCadastroCliente(){
   return (
     <>      
       <form name="FrmCadastroCliente" method="post" onSubmit={alterarId < 0 ? handleSubmitInsert: handleSubmitUpdate}>
-
-          alterarId: {alterarId}
-          clienteId: {clienteId}
-
           <label><h2> {(alterarId < 0) ? (<div>1 - Formulário Cadastro Cliente</div>) : (<div>1 - Formulário Alteração Cliente</div>)} </h2></label>
           <label>ClienteId: 
           <input type="text" size="10" name="clienteId" value={clienteId} onChange={(event) => setClienteId(event.target.value)}/></label><br/>
@@ -160,7 +158,7 @@ function FrmCadastroCliente(){
           <input type="text" size="60" id="nome" name="nome" value={nome} onChange={(event) => setNome(event.target.value)} /></label><br/>
           <label>CPF: 
           <input type="text" size="15" id="cpf" name="cpf" value={cpf} onChange={(event) => setCpf(event.target.value)} /></label><br/><br/>
-          <input type="button" value="Limpar"  onClick={limpar} />
+          <input type="button" name="Limpar" value="Limpar" onClick={limpar} />
           <input type="submit" name="Cadastrar" value="Cadastrar"/><br/><br/>
           <label>Resultado: {resultado} </label>
       </form>
@@ -233,7 +231,10 @@ function FrmListarCliente(){
       <h2>2 - Listar(Editar, Excluir)</h2>        
       <div>
         <table border='1'> 
-          <td>Id</td> <td>Nome</td> <td>CPF</td> <td>Editar</td> <td>Excluir</td>          
+          <thead>
+            <th>Id</th> <th>Nome</th> <th>CPF</th> <th>Editar</th> <th>Excluir</th>          
+          </thead>  
+          <tbody>
           {clientes.map(cliente => (
             <tr>
               <td> {cliente.clienteid} </td>
@@ -247,6 +248,7 @@ function FrmListarCliente(){
               </td>
             </tr>
           ))}
+          </tbody>
         </table>
         <br/>          
       </div>
