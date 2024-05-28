@@ -217,7 +217,7 @@ function FrmListarCliente(){
 
     // Busca os clientes cadastrados no servidor.
     const getClientes = () => {
-      fetch(`${endereco_servidor}/cliente`)
+      fetch(`${endereco_servidor}/clientes`)
         .then(response => {return response.json()}) //Converte a resposta para JSON
         .then(data => {setClientes(data)}) // Atribui a resposta ao cliente
     };
@@ -266,7 +266,7 @@ function MenuPrincipal() {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Layout />}>
-            <Route path='frmcadastroCliente/:alterarId' element={<FrmCadastroCliente />} />
+            <Route path='frmcadastrocliente/:alterarId' element={<FrmCadastroCliente />} />
             <Route path='frmexcluircliente/:clienteId' element={<FrmExcluirCliente />} />
             <Route path='frmlistarcliente' element={<FrmListarCliente />} />
             <Route path='*' element={<NoPage />} />
